@@ -87,10 +87,14 @@ class UserService {
                 $mailer->sendMail($subject, $body);
             }
 
+            $user = $user_model->getByUserId($user_id);
+            $user_profile = $user_profile_model->getByUserId($user_id);
             Utils::userLogEntry($user_id, "New user registration", $this->cnx);
             $this->cnx->commit();
             return Utils::response([
-
+                "user" => $user,
+                "profile" => $user_profile,
+                "status" => "200"
             ]);
         } catch (Exception $ex) {
             $this->cnx->rollBack();
