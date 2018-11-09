@@ -92,6 +92,7 @@ class UserService {
             Utils::userLogEntry($user_id, "New user registration", $this->cnx);
             $this->cnx->commit();
             return Utils::response([
+                "api_autho_key" => $api_autho_key,
                 "user" => $user,
                 "profile" => $user_profile,
                 "status" => "200"
