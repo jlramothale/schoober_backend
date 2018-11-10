@@ -46,7 +46,7 @@ final class UsersController extends Controller {
      * This function is typical for collecting more client data during registration
      */
     public function completeRegistration(){
-        if(!$this->authenticateRequest($_GET["api_key"])){
+        if(!$this->authenticateRequest($_POST["api_key"])){
             Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
                 "message" => "Invalid API Key: ". $_POST["api_key"],
@@ -70,7 +70,7 @@ final class UsersController extends Controller {
      * login - sign-in a user into the app.
      */
     public function login() {
-        if(!$this->authenticateRequest($_GET["api_key"])){
+        if(!$this->authenticateRequest($_POST["api_key"])){
             Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
                 "message" => "Invalid API Key: ". $_POST["api_key"],
@@ -89,7 +89,7 @@ final class UsersController extends Controller {
      * updateUserProfile - updates user profile information within the application
      */
     public function updateUserProfile(){
-        if(!$this->authenticateRequest($_GET["api_key"])){
+        if(!$this->authenticateRequest($_POST["api_key"])){
             Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
                 "message" => "Invalid API Key: ". $_POST["api_key"],
@@ -115,7 +115,7 @@ final class UsersController extends Controller {
      * resetPasswordCode - Retrieves a code to confirm the password reset process
      */
     public function resetPasswordCode(){
-        if(!$this->authenticateRequest($_GET["api_key"])){
+        if(!$this->authenticateRequest($_POST["api_key"])){
             Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
                 "message" => "Invalid API Key: ". $_POST["api_key"],
@@ -133,7 +133,7 @@ final class UsersController extends Controller {
      * confirmResetCode - confirms the reset password code
      */
     public function confirmResetCode(){
-        if(!$this->authenticateRequest($_GET["api_key"])){
+        if(!$this->authenticateRequest($_POST["api_key"])){
             Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
                 "message" => "Invalid API Key: ". $_POST["api_key"],
@@ -152,10 +152,10 @@ final class UsersController extends Controller {
      * resetPassword - final action to reset a user password
      */
     public function resetPassword(){
-        if(!$this->authenticateRequest($_GET["api_key"])){
-            Utils::systemLogEntry("Invalid API Key: {$_GET["api_key"]}", $this->cnx);
+        if(!$this->authenticateRequest($_POST["api_key"])){
+            Utils::systemLogEntry("Invalid API Key: {$_POST["api_key"]}", $this->cnx);
             echo Utils::response([
-                "message" => "Invalid API Key: ". $_GET["api_key"],
+                "message" => "Invalid API Key: ". $_POST["api_key"],
                 "status" => "501"
             ]);
         } else {
